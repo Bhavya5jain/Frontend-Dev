@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Photo Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    figure {
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+
+    figure:hover img {
+      transform: scale(1.1);
+    }
+
+    figcaption {
+      text-align: center;
+      padding: 10px;
+      background-color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Photo Gallery</h1>
+
+  <div class="gallery">
+    <figure>
+      <img src="https://picsum.photos/id/1018/400/300" alt="Mountain">
+      <figcaption>Mountain</figcaption>
+    </figure>
+    <figure>
+      <img src="https://picsum.photos/id/1025/400/300" alt="Dog">
+      <figcaption>Dog</figcaption>
+    </figure>
+    <figure>
+      <img src="https://picsum.photos/id/1035/400/300" alt="Forest">
+      <figcaption>Forest</figcaption>
+    </figure>
+    <figure>
+      <img src="https://picsum.photos/id/1040/400/300" alt="Beach">
+      <figcaption>Beach</figcaption>
+    </figure>
+    <figure>
+      <img src="https://picsum.photos/id/1062/400/300" alt="River">
+      <figcaption>River</figcaption>
+    </figure>
+    <figure>
+      <img src="https://picsum.photos/id/1074/400/300" alt="City">
+      <figcaption>City</figcaption>
+    </figure>
+  </div>
+
+</body>
+</html>

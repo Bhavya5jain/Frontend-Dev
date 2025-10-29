@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3-Section Homepage</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: lightblue;
+      padding: 15px 0;
+    }
+
+
+    header a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+
+    header a:hover {
+      color: darkblue;
+    }
+
+
+    /* Main Section */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #f5f5f5;
+      padding: 40px 20px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+
+    .box {
+      background-color: white;
+      width: 250px;
+      height: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-size: 20px;
+      font-weight: bold;
+      color: darkblue;
+    }
+
+
+    .box:hover {
+      transform: rotate(2deg);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+
+
+    /* Footer */
+    footer {
+      background-color: lightblue;
+      text-align: center;
+      padding: 10px 0;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+
+
+    /* Responsive Layout */
+    @media (max-width: 800px) {
+      main {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+
+      .box {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <header>
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </header>
+
+
+  <main>
+    <div class="box" id="services">Services</div>
+    <div class="box" id="projects">Projects</div>
+    <div class="box" id="contact">Contact</div>
+  </main>
+
+
+  <footer>
+    &copy; 2025 Bhavya Jain | All Rights Reserved
+  </footer>
+
+
+</body>
+</html>
+
+
+
+

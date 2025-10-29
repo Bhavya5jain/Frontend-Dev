@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: lightblue;
+    }
+
+
+    header h1 {
+      font-size: 24px;
+    }
+
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+
+    /* Main Section */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background-color: #f0f0f0;
+    }
+
+
+    .about, .image-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+
+    .about {
+      flex-direction: column;
+      text-align: center;
+    }
+
+
+    .about h2 {
+      margin-bottom: 15px;
+      color: darkblue;
+    }
+
+
+    .about p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+
+    .image-section img {
+      width: 80%;
+      max-width: 300px;
+      border-radius: 10px;
+      border: 2px solid darkblue;
+    }
+
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: lightblue;
+    }
+
+
+    /* Responsive Design */
+    @media (max-width: 700px) {
+      header, main {
+        flex-direction: column;
+        text-align: center;
+      }
+
+
+      nav {
+        margin-top: 10px;
+      }
+
+
+      .about, .image-section {
+        flex-direction: column;
+      }
+
+
+      .image-section img {
+        width: 60%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <header>
+    <h1>Bhavya Jain</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+
+  <main>
+    <section class="about" id="about">
+      <h2>About Me</h2>
+      <p>Hello! I'm Bhavya Jain, a passionate web developer who loves creating clean, responsive, and visually appealing websites using HTML, CSS, and JavaScript.</p>
+    </section>
+
+
+    <section class="image-section">
+      <img src="Passport_Size_Image.jpg" alt="My Photo">
+    </section>
+  </main>
+
+
+  <footer>
+    &copy; 2025 Bhavya Jain. All rights reserved.
+  </footer>
+
+
+</body>
+</html>

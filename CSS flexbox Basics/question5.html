@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Section</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    /* Flexbox Container */
+    .pricing-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    /* Pricing Cards */
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 250px;
+      text-align: center;
+      padding: 30px 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    /* Fade-in Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Hover Effect */
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Highlighted Middle Card */
+    .card.highlight {
+      background-color: #007bff;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 28px;
+      margin: 15px 0;
+      font-weight: bold;
+    }
+
+    .card ul {
+      list-style: none;
+      margin: 15px 0;
+    }
+
+    .card ul li {
+      margin: 8px 0;
+    }
+
+    .card button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .highlight button {
+      background-color: white;
+      color: #007bff;
+    }
+
+    .card button:hover {
+      background-color: #0056b3;
+    }
+
+    .highlight button:hover {
+      background-color: #e6e6e6;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 750px) {
+      .pricing-container {
+        flex-direction: column;
+      }
+
+      .card {
+        width: 80%;
+      }
+
+      .card.highlight {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Our Pricing Plans</h1>
+
+  <div class="pricing-container">
+    <div class="card">
+      <h2>Basic</h2>
+      <p class="price">$10/month</p>
+      <ul>
+        <li>1 Project</li>
+        <li>Basic Support</li>
+        <li>Limited Access</li>
+      </ul>
+      <button>Choose Plan</button>
+    </div>
+
+    <div class="card highlight">
+      <h2>Standard</h2>
+      <p class="price">$25/month</p>
+      <ul>
+        <li>5 Projects</li>
+        <li>Priority Support</li>
+        <li>Full Access</li>
+      </ul>
+      <button>Choose Plan</button>
+    </div>
+
+    <div class="card">
+      <h2>Premium</h2>
+      <p class="price">$50/month</p>
+      <ul>
+        <li>Unlimited Projects</li>
+        <li>24/7 Support</li>
+        <li>All Features</li>
+      </ul>
+      <button>Choose Plan</button>
+    </div>
+  </div>
+
+</body>
+</html>

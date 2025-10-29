@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Blog Layout</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+      display: grid;
+      grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+      grid-template-columns: 250px 1fr;
+      grid-template-rows: auto 1fr auto;
+      gap: 20px;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Header */
+    header {
+      grid-area: header;
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 10px;
+    }
+
+    header h1 {
+      font-size: 24px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      margin-left: 20px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #cce0ff;
+    }
+
+    /* Sidebar */
+    aside {
+      grid-area: sidebar;
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    aside h2 {
+      margin-bottom: 15px;
+      color: #007bff;
+    }
+
+    aside ul {
+      list-style: none;
+    }
+
+    aside ul li {
+      margin: 10px 0;
+      padding: 8px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    aside ul li:hover {
+      color: #007bff;
+    }
+
+    /* Main Content */
+    main {
+      grid-area: main;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .post {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .post:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .post h3 {
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .post p {
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      grid-area: footer;
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 800px) {
+      body {
+        grid-template-areas:
+          "header"
+          "main"
+          "sidebar"
+          "footer";
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My Tech Blog</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <aside>
+    <h2>Categories</h2>
+    <ul>
+      <li>Web Development</li>
+      <li>Programming</li>
+      <li>AI & Machine Learning</li>
+      <li>Cloud Computing</li>
+      <li>Cybersecurity</li>
+    </ul>
+  </aside>
+
+  <main>
+    <div class="post">
+      <h3>Understanding CSS Grid</h3>
+      <p>CSS Grid is a powerful layout system that allows developers to create complex, responsive designs easily. In this post, we explore how to use grid-template-areas for better structure.</p>
+    </div>
+    <div class="post">
+      <h3>Mastering Flexbox</h3>
+      <p>Flexbox simplifies aligning and distributing space in a container. It’s a must-learn concept for any modern web developer building responsive interfaces.</p>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 My Tech Blog | Contact: info@mytechblog.com
+  </footer>
+
+</body>
+</html>

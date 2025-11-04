@@ -1,0 +1,28 @@
+body {
+  font-family: "Georgia", serif;
+  line-height: 1.6;
+  margin: 40px;
+  color: #333;
+}
+
+p {
+  text-align: justify;
+  letter-spacing: 0.5px;
+}
+
+/* Styling inline elements */
+mark { background: #ff0; color: #000; }
+strong { color: #0077cc; }
+em { color: #aa00ff; }
+
+/* Pseudo-elements for emphasis */
+p::first-letter {
+  font-size: 2em;
+  font-weight: bold;
+  color: #ff6600;
+}
+
+p::first-line {
+  font-weight: bold;
+  color: #0077cc;
+}

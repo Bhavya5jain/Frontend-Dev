@@ -1,0 +1,44 @@
+body, html {
+  margin: 0;
+  height: 100%;
+  font-family: sans-serif;
+  background: #eef;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  height: 100vh;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 10px;
+}
+
+/* Different units */
+.box1 {
+  width: 150px;
+  height: 150px;
+  background: #0077cc;
+}
+
+.box2 {
+  width: 30%;
+  height: 200px;
+  background: #ff6600;
+  max-width: 400px;
+}
+
+.box3 {
+  width: 10em;
+  height: 50vh;
+  background: #28a745;
+  overflow: auto;
+  min-height: 100px;
+}

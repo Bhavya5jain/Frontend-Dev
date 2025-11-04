@@ -1,0 +1,29 @@
+body {
+  font-family: sans-serif;
+  background: #f0f0f0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.box-model {
+  background: #ff9999;
+  padding: 30px;
+  border: 10px solid #0077cc;
+  margin: 40px;
+  outline: 2px dashed #333;
+}
+
+.content {
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Demonstrating box-sizing */
+.box-model {
+  box-sizing: border-box;
+}

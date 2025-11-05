@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Combined Effects</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fc;
+      padding: 50px 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      width: 180px;
+      padding: 24px;
+      text-align: center;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      background: #3498db;
+      color: white;
+    }
+
+    .card:focus-within {
+      outline: 3px solid #a8d0e6;
+    }
+
+    .card button {
+      margin-top: 12px;
+      padding: 10px 20px;
+      background: #2ecc71;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .card button:hover {
+      background: #27ae60;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" tabindex="0">
+      <h3>Card 1</h3>
+      <p>Hover me!</p>
+      <button>Click</button>
+    </div>
+    <div class="card" tabindex="0">
+      <h3>Card 2</h3>
+      <p>Smooth effects</p>
+      <button>Press</button>
+    </div>
+    <div class="card" tabindex="0">
+      <h3>Card 3</h3>
+      <p>Try tab + enter</p>
+      <button>Go</button>
+    </div>
+  </div>
+</body>
+</html>

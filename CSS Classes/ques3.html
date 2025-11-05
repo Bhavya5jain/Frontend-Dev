@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Showcase</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      padding: 40px 20px;
+      color: #333;
+    }
+    h1 { text-align: center; margin-bottom: 30px; color: #2c3e50; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    figure {
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    figure img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    figcaption {
+      padding: 12px;
+      background: white;
+      text-align: center;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+
+    figure:hover {
+      transform: translateY(-8px);
+    }
+
+    figure:hover img {
+      transform: scale(1.1);
+    }
+
+    figure:hover .overlay {
+      opacity: 1;
+    }
+
+    .img-wrapper {
+      position: relative;
+    }
+
+    @media (max-width: 700px) {
+      .gallery { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Image Showcase</h1>
+  <div class="gallery">
+    <figure>
+      <div class="img-wrapper">
+        <img src="https://picsum.photos/300/200?random=1" alt="Image 1">
+        <div class="overlay"></div>
+      </div>
+      <figcaption>Sunset Valley</figcaption>
+    </figure>
+    <figure>
+      <div class="img-wrapper">
+        <img src="https://picsum.photos/300/200?random=2" alt="Image 2">
+        <div class="overlay"></div>
+      </div>
+      <figcaption>Mountain Peak</figcaption>
+    </figure>
+    <figure>
+      <div class="img-wrapper">
+        <img src="https://picsum.photos/300/200?random=3" alt="Image 3">
+        <div class="overlay"></div>
+      </div>
+      <figcaption>Ocean Waves</figcaption>
+    </figure>
+    <figure>
+      <div class="img-wrapper">
+        <img src="https://picsum.photos/300/200?random=4" alt="Image 4">
+        <div class="overlay"></div>
+      </div>
+      <figcaption>City Lights</figcaption>
+    </figure>
+    <figure>
+      <div class="img-wrapper">
+        <img src="https://picsum.photos/300/200?random=5" alt="Image 5">
+        <div class="overlay"></div>
+      </div>
+      <figcaption>Forest Path</figcaption>
+    </figure>
+    <figure>
+      <div class="img-wrapper">
+        <img src="https://picsum.photos/300/200?random=6" alt="Image 6">
+        <div class="overlay"></div>
+      </div>
+      <figcaption>Desert Dunes</figcaption>
+    </figure>
+  </div>
+</body>
+</html>

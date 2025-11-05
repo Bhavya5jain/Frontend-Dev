@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Box-Sizing Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fa;
+      padding: 40px 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 { margin-bottom: 30px; color: #2c3e50; }
+
+    .boxes {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      width: 200px;
+      height: 150px;
+      padding: 20px;
+      color: white;
+      font-weight: bold;
+      border: 10px solid #34495e;
+      margin-bottom: 15px;
+    }
+
+    .default {
+      background: #e74c3c;
+      /* content-box by default */
+    }
+
+    .border-box {
+      background: #27ae60;
+      box-sizing: border-box;
+    }
+
+    .info {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-top: 20px;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Box-Sizing Comparison</h1>
+    <div class="boxes">
+      <div>
+        <div class="box default">content-box<br>240×190px</div>
+        <p><strong>Default</strong></p>
+      </div>
+      <div>
+        <div class="box border-box">border-box<br>200×150px</div>
+        <p><strong>border-box</strong></p>
+      </div>
+    </div>
+    <div class="info">
+      <p><strong>content-box:</strong> Width/height = content only. Padding & border add to total size.</p>
+      <p><strong>border-box:</strong> Width/height include content, padding, and border.</p>
+    </div>
+  </div>
+</body>
+</html>

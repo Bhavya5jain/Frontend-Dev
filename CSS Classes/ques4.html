@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Selectors Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9fb;
+      color: #333;
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 20px;
+      background: #2c3e50;
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 { color: #2980b9; margin: 25px 0 15px; }
+    p, li { margin-bottom: 12px; }
+
+    /* Element selector */
+    p { font-style: italic; }
+
+    /* Class selector */
+    .highlight { background: #fff3cd; padding: 4px 8px; border-radius: 4px; }
+
+    /* ID selector */
+    #special { color: #e74c3c; font-weight: bold; }
+
+    /* Attribute selector */
+    a[target="_blank"] { color: #27ae60; text-decoration: underline; }
+
+    /* Child combinator > */
+    ul > li { list-style: square; margin-left: 20px; }
+
+    /* Adjacent sibling + */
+    h2 + p { color: #8e44ad; font-weight: 600; }
+
+    /* General sibling ~ */
+    h2 ~ p { border-left: 4px solid #3498db; padding-left: 12px; }
+
+    /* Descendant */
+    .box p { font-size: 0.95rem; color: #555; }
+
+    .box { padding: 20px; margin: 20px 0; background: #ecf0f1; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header><h1>CSS Selectors Practice</h1></header>
+
+  <div class="container">
+    <h2>Element Selector</h2>
+    <p>All paragraphs are italicized.</p>
+
+    <h2>Class Selector</h2>
+    <p>This has a <span class="highlight">highlighted</span> word.</p>
+
+    <h2>ID Selector</h2>
+    <p id="special">This text is unique and bold red.</p>
+
+    <h2>Attribute Selector</h2>
+    <p>Visit <a href="https://example.com" target="_blank">external link</a> (opens in new tab).</p>
+
+    <h2>Child Combinator</h2>
+    <ul>
+      <li>Direct child</li>
+      <li>Another child</li>
+    </ul>
+
+    <h2>Adjacent Sibling</h2>
+    <p>This paragraph follows h2 directly.</p>
+    <p>This one does not.</p>
+
+    <h2>General Sibling</h2>
+    <p>All paragraphs after h2 get a blue border.</p>
+    <p>Another one.</p>
+
+    <div class="box">
+      <h2>Descendant</h2>
+      <p>All p inside .box are smaller and gray.</p>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 CSS Selectors Demo</footer>
+</body>
+</html>

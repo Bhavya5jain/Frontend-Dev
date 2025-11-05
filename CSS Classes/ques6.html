@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Animations</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      color: white;
+    }
+
+    h1 { font-size: 2.2rem; }
+
+    .anim-container {
+      display: flex;
+      gap: 50px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Moving Box */
+    .box {
+      width: 80px;
+      height: 80px;
+      background: #f1c40f;
+      border-radius: 12px;
+      animation: move 3s ease-in-out infinite;
+    }
+    @keyframes move {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(150px); }
+    }
+
+    /* Bouncing Ball */
+    .ball {
+      width: 60px;
+      height: 60px;
+      background: #e74c3c;
+      border-radius: 50%;
+      animation: bounce 1.5s ease-in-out infinite;
+      animation-delay: 0.5s;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-100px); }
+    }
+
+    /* Color Text */
+    .text {
+      font-size: 2rem;
+      font-weight: bold;
+      animation: colorChange 4s ease-in-out infinite alternate;
+    }
+    @keyframes colorChange {
+      0% { color: #f39c12; }
+      50% { color: #9b59b6; }
+      100% { color: #1abc9c; }
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS Animations</h1>
+  <div class="anim-container">
+    <div class="box"></div>
+    <div class="ball"></div>
+    <div class="text">Animated!</div>
+  </div>
+</body>
+</html>

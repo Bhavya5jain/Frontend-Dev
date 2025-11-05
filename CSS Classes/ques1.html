@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pseudo-Classes Demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fa;
+      color: #333;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #2c3e50;
+      font-size: 2rem;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .example {
+      flex: 1;
+      min-width: 220px;
+      text-align: center;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .example h3 {
+      margin-bottom: 12px;
+      color: #2980b9;
+      font-size: 1.2rem;
+    }
+
+    .example p {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .hover-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+    .hover-link:hover {
+      background: #e74c3c;
+    }
+
+  
+    .focus-btn {
+      padding: 10px 20px;
+      background: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    .focus-btn:focus {
+      background: #2ecc71;
+      outline: 3px solid #1abc9c;
+    }
+
+   
+    .active-btn {
+      padding: 10px 20px;
+      background: #9b59b6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.1s ease;
+    }
+    .active-btn:active {
+      background: #8e44ad;
+      transform: scale(0.95);
+    }
+
+    .nth-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-width: 200px;
+      margin: 15px auto 0;
+    }
+    .nth-list li {
+      padding: 10px;
+      background: #ecf0f1;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+    .nth-list li:nth-child(odd) {
+      background: #bdc3c7;
+    }
+    .nth-list li:nth-child(even):hover {
+      background: #f1c40f;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CSS Pseudo-Classes Demo</h1>
+
+  <div class="container">
+
+    <!-- :hover -->
+    <div class="example">
+      <h3>:hover</h3>
+      <a href="#" class="hover-link">Hover over me</a>
+      <p>Changes background when the mouse hovers over the link.</p>
+    </div>
+
+    <!-- :focus -->
+    <div class="example">
+      <h3>:focus</h3>
+      <button class="focus-btn" tabindex="0">Click or Tab to Focus</button>
+      <p>Applies when the button is focused (click or Tab key).</p>
+    </div>
+
+    <!-- :active -->
+    <div class="example">
+      <h3>:active</h3>
+      <button class="active-btn">Hold Click</button>
+      <p>Triggers while the button is being clicked.</p>
+    </div>
+
+    <!-- :nth-child -->
+    <div class="example">
+      <h3>:nth-child()</h3>
+      <ul class="nth-list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+      </ul>
+      <p>Odd items are gray. Even items turn yellow on hover.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

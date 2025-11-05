@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pure CSS Tooltips</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fa;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      margin-bottom: 50px;
+      color: #2c3e50;
+      font-size: 2rem;
+    }
+
+    .tooltip-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 70px;
+      flex-wrap: wrap;
+    }
+
+    .tooltip-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip-trigger {
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 12px;
+      transition: color 0.3s ease;
+    }
+
+    .tooltip-trigger:hover {
+      color: #3498db;
+    }
+
+    .tooltip {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 12px;
+      background: #2c3e50;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+      pointer-events: none;
+      z-index: 10;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 7px solid transparent;
+      border-top-color: #2c3e50;
+    }
+
+    .tooltip-wrapper:hover .tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width: 600px) {
+      .tooltip-container {
+        gap: 40px;
+      }
+      .tooltip-trigger {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pure CSS Tooltips</h1>
+
+  <div class="tooltip-container">
+
+    <div class="tooltip-wrapper">
+      <div class="tooltip-trigger">Star</div>
+      <div class="tooltip">Favorite this item!</div>
+    </div>
+
+    <div class="tooltip-wrapper">
+      <div class="tooltip-trigger">Info</div>
+      <div class="tooltip">More information</div>
+    </div>
+
+    <div class="tooltip-wrapper">
+      <div class="tooltip-trigger">Heart</div>
+      <div class="tooltip">Show some love</div>
+    </div>
+
+    <div class="tooltip-wrapper">
+      <div class="tooltip-trigger">Gear</div>
+      <div class="tooltip">Settings & Options</div>
+    </div>
+
+  </div>
+
+</body>
+</html>

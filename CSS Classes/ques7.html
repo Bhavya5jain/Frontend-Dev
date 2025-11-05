@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UI Components</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 { margin-bottom: 20px; color: #2c3e50; text-align: center; }
+
+    .search-bar {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px 0 0 8px;
+      font-size: 1rem;
+    }
+    .search-bar input:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    }
+    .search-bar button {
+      padding: 0 16px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+    }
+    .search-bar button:hover { background: #2980b9; }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .btn-group button {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid #3498db;
+      background: white;
+      color: #3498db;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn-group button:hover {
+      background: #3498db;
+      color: white;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+    .dropdown select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: white;
+    }
+    .dropdown select:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>UI Components</h2>
+    <div class="search-bar">
+      <input type="text" placeholder="Search..." />
+      <button>Search</button>
+    </div>
+    <div class="btn-group">
+      <button>Save</button>
+      <button>Cancel</button>
+    </div>
+    <div class="dropdown">
+      <select>
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+      </select>
+    </div>
+  </div>
+</body>
+</html>

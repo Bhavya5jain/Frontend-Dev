@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Typography Example</title>
+
+  <style>
+    /* General Page Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    section {
+      max-width: 800px;
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 20px;
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      color: #0077b6;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      line-height: 1.6;
+      margin: 0 auto;
+      max-width: 700px;
+    }
+
+    /* Responsive for smaller screens */
+    @media (max-width: 700px) {
+      section {
+        padding: 25px;
+      }
+
+      h1 {
+        line-height: 1.2;
+        margin-bottom: 15px;
+      }
+
+      p {
+        line-height: 1.8;
+        letter-spacing: 0.5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <h1>Responsive Typography with clamp()</h1>
+    <p>
+      This example demonstrates how font sizes can scale automatically based on screen width using the CSS <b>clamp()</b> function. 
+      It ensures that your text remains readable and visually balanced on devices of all sizes — from desktops to smartphones.
+    </p>
+  </section>
+</body>
+</html>

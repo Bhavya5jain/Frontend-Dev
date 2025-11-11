@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Design Principles Summary</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 30px;
+            color: #00796b;
+        }
+
+        /* Grid Layout */
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .box:hover {
+            background: linear-gradient(135deg, #00acc1, #00796b);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .box h2 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .box p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .code {
+            background: #f0f0f0;
+            color: #333;
+            font-family: monospace;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .box:hover .code {
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+
+        /* Responsive: Single Column Below 600px */
+        @media (max-width: 600px) {
+            .principles {
+                grid-template-columns: 1fr;
+            }
+
+            .box {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Responsive Design Principles</h1>
+
+    <section class="principles">
+        <!-- Fluid Layouts -->
+        <div class="box">
+            <h2>Fluid Layouts</h2>
+            <p>Use relative units like %, vw, and vh to make elements resize automatically with the viewport.</p>
+            <div class="code">
+                div { width: 80%; margin: auto; }
+            </div>
+        </div>
+
+        <!-- Flexible Media -->
+        <div class="box">
+            <h2>Flexible Media</h2>
+            <p>Ensure images and videos scale properly within their containers by setting max-width to 100%.</p>
+            <div class="code">
+                img { max-width: 100%; height: auto; }
+            </div>
+        </div>
+
+        <!-- Breakpoints -->
+        <div class="box">
+            <h2>Breakpoints</h2>
+            <p>Use media queries to adjust layouts and font sizes at specific screen widths.</p>
+            <div class="code">
+                @media (max-width: 600px) {<br>
+                &nbsp;&nbsp;body { font-size: 14px; }<br>
+                }
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

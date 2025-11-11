@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Dashboard Summary</title>
+    <style>
+        /* Reset and Basics */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            height: 100vh;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Header */
+        header {
+            background: #00796b;
+            color: white;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Dashboard Grid Layout */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: #004d40;
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            animation: slideIn 1s ease;
+        }
+
+        .sidebar h2 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            animation: fadeUp 1s ease;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .card h3 {
+            color: #00796b;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 750px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                text-align: center;
+            }
+
+            .sidebar h2 {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>Responsive Dashboard Summary</header>
+
+    <section class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Menu</h2>
+            <a href="#">Home</a>
+            <a href="#">Filters</a>
+            <a href="#">Typography</a>
+            <a href="#">Media Queries</a>
+            <a href="#">Cheat Sheet</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="card">
+                <h3>Filters</h3>
+                <p>Enhance visuals with CSS filters such as blur(), brightness(), and contrast() for creative effects.</p>
+            </div>
+            <div class="card">
+                <h3>Typography</h3>
+                <p>Use relative units and the clamp() function to make text scale fluidly across screen sizes.</p>
+            </div>
+            <div class="card">
+                <h3>Media Queries</h3>
+                <p>Adapt layouts for various devices using breakpoints like @media (max-width: 750px).</p>
+            </div>
+            <div class="card">
+                <h3>Cheat Sheet</h3>
+                <p>Quick reference to responsive design concepts: Flexbox, Grid, Filters, and Typography.</p>
+            </div>
+        </main>
+    </section>
+
+</body>
+</html>

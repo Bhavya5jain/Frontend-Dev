@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Image Filter Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: all 0.4s ease;
+    }
+
+    /* Apply different filters */
+    figure:nth-child(1) img { filter: blur(3px); }
+    figure:nth-child(2) img { filter: grayscale(100%); }
+    figure:nth-child(3) img { filter: sepia(80%); }
+    figure:nth-child(4) img { filter: brightness(0.6); }
+    figure:nth-child(5) img { filter: contrast(180%); }
+    figure:nth-child(6) img { filter: hue-rotate(120deg); }
+
+    /* Remove filter on hover */
+    img:hover {
+      filter: none;
+      transform: scale(1.03);
+    }
+
+    /* Captions */
+    figcaption {
+      margin-top: 8px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Responsive Image Filter Gallery</h1>
+
+  <div class="gallery">
+    <figure>
+      <img src="https://picsum.photos/id/1015/400/300" alt="Blur Image">
+      <figcaption>Blur Effect</figcaption>
+    </figure>
+
+    <figure>
+      <img src="https://picsum.photos/id/1025/400/300" alt="Grayscale Image">
+      <figcaption>Grayscale Effect</figcaption>
+    </figure>
+
+    <figure>
+      <img src="https://picsum.photos/id/1041/400/300" alt="Sepia Image">
+      <figcaption>Sepia Effect</figcaption>
+    </figure>
+
+    <figure>
+      <img src="https://picsum.photos/id/1050/400/300" alt="Brightness Image">
+      <figcaption>Brightness Effect</figcaption>
+    </figure>
+
+    <figure>
+      <img src="https://picsum.photos/id/1069/400/300" alt="Contrast Image">
+      <figcaption>Contrast Effect</figcaption>
+    </figure>
+
+    <figure>
+      <img src="https://picsum.photos/id/1074/400/300" alt="Hue Rotate Image">
+      <figcaption>Hue Rotate Effect</figcaption>
+    </figure>
+  </div>
+</body>
+</html>

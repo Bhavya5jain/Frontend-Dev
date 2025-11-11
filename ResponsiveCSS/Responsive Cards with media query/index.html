@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Cards with Media Queries</title>
+
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 40px;
+    }
+
+    /* Card Container */
+    .card-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* Individual Card */
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      flex: 1;
+      min-width: 200px;
+      max-width: 300px;
+      text-align: center;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .card:hover {
+      background-color: #caf0f8;
+      transform: translateY(-5px);
+    }
+
+    .card h2 {
+      color: #0077b6;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 15px;
+    }
+
+    /* Media Queries */
+    /* Desktop: 4 columns (default) */
+    @media (min-width: 901px) {
+      .card-container {
+        flex-direction: row;
+      }
+    }
+
+    /* Tablet: 2 columns */
+    @media (max-width: 900px) {
+      .card-container {
+        justify-content: center;
+      }
+      .card {
+        flex: 0 1 calc(50% - 20px);
+      }
+    }
+
+    /* Mobile: 1 column */
+    @media (max-width: 600px) {
+      .card {
+        flex: 0 1 100%;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Responsive Card Layout</h1>
+
+  <div class="card-container">
+    <div class="card">
+      <h2>Card 1</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+
+    <div class="card">
+      <h2>Card 2</h2>
+      <p>Phasellus ut justo vel sapien consequat elementum.</p>
+    </div>
+
+    <div class="card">
+      <h2>Card 3</h2>
+      <p>Praesent ac sem eget est egestas volutpat.</p>
+    </div>
+
+    <div class="card">
+      <h2>Card 4</h2>
+      <p>Fusce vel dui. Vivamus aliquet elit ac nisl.</p>
+    </div>
+  </div>
+
+</body>
+</html>

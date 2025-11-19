@@ -1,0 +1,66 @@
+<!-- Q9.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Cart</title>
+</head>
+<body>
+  <h1>Cart</h1>
+  <div id="items"></div>
+  <label>Coupon: <input id="coupon" placeholder="SAVE20 or DISC10" /></label>
+  <button id="apply">Apply</button>
+  <h2 id="total"></h2>
+  <script >
+
+/**
+ * Cart class: add item, getTotal, applyCoupon with RegExp.
+ * Coupon formats: SAVE20, DISC10 -> percentage value parsed from trailing digits.
+ */
+class Cart {
+  constructor() {
+    this.items = [];
+    this.discount = 0; // percent
+  }
+  addItem = (name, price, qty = 1) => {
+    this.items.push({ name, price: Number(price), quantity: Number(qty) });
+  };
+  getTotal = () => {
+    const subtotal = this.items.reduce((sum, it) => sum + it.price * it.quantity, 0);
+    const discounted = subtotal * (1 - this.discount / 100);
+    return { subtotal, discounted: Number(discounted.toFixed(2)) };
+  };
+  applyCoupon = (code) => {
+    const pattern = /^(SAVE|DISC)(\d{1,2})$/;
+    const m = code.toUpperCase().trim().match(pattern);
+    if (!m) throw new Error("Invalid coupon format");
+    this.discount = Number(m[2]);
+  };
+}
+
+const cart = new Cart();
+cart.addItem("Laptop Sleeve", 999, 1);
+cart.addItem("Mouse", 1499, 2);
+cart.addItem("USB-C Cable", 399, 3);
+
+const itemsDiv = document.getElementById("items");
+const totalEl = document.getElementById("total");
+const paint = () => {
+  const { subtotal, discounted } = cart.getTotal();
+  itemsDiv.innerHTML = cart.items.map(i => `<p>${i.name} x ${i.quantity} — ₹${i.price}</p>`).join("");
+  totalEl.textContent = `Subtotal: ₹${subtotal} | Discount: ${cart.discount}% | Final: ₹${discounted}`;
+};
+paint();
+
+document.getElementById("apply").addEventListener("click", () => {
+  const code = document.getElementById("coupon").value;
+  try {
+    cart.applyCoupon(code);
+    paint();
+  } catch (e) {
+    totalEl.textContent = `Error: ${e.message}`;
+  }
+});
+  </script>
+</body>
+</html>

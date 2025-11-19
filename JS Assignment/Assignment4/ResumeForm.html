@@ -1,0 +1,77 @@
+<!-- Q10.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume Builder</title>
+  <style>.error{color:#e53935}.ok{color:#43a047}</style>
+</head>
+<body>
+  <h1>Resume Builder</h1>
+  <form id="resumeForm" novalidate>
+    <label>Name: <input id="name" /></label>
+    <div id="nameMsg" class="error"></div>
+
+    <label>Email: <input id="email" type="email" /></label>
+    <div id="emailMsg" class="error"></div>
+
+    <label>Skills (comma-separated): <input id="skills" /></label>
+
+    <label>GitHub: <input id="github" /></label>
+    <div id="gitMsg" class="error"></div>
+
+    <label>LinkedIn: <input id="linkedin" /></label>
+    <div id="linkMsg" class="error"></div>
+
+    <button type="submit">Build</button>
+  </form>
+
+  <h2>Resume Data</h2>
+  <pre id="data"></pre>
+  <script >
+
+/**
+ * Validates email and URL beginnings (https://),
+ * builds final resume data object and displays it.
+ */
+const form = document.getElementById("resumeForm");
+const nameEl = document.getElementById("name");
+const emailEl = document.getElementById("email");
+const skillsEl = document.getElementById("skills");
+const githubEl = document.getElementById("github");
+const linkedinEl = document.getElementById("linkedin");
+
+const nameMsg = document.getElementById("nameMsg");
+const emailMsg = document.getElementById("emailMsg");
+const gitMsg = document.getElementById("gitMsg");
+const linkMsg = document.getElementById("linkMsg");
+const dataOut = document.getElementById("data");
+
+const emailRx = /^[^\s@]+@[^@\s]+\.[^\s@]+$/;
+const httpsRx = /^https:\/\//;
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let ok = true;
+
+  if (!nameEl.value.trim()) { nameMsg.textContent = "Name is required."; ok = false; } else nameMsg.textContent = "";
+  if (!emailRx.test(emailEl.value.trim())) { emailMsg.textContent = "Invalid email."; ok = false; } else emailMsg.textContent = "";
+  if (!httpsRx.test(githubEl.value.trim())) { gitMsg.textContent = "GitHub must start with https://"; ok = false; } else gitMsg.textContent = "";
+  if (!httpsRx.test(linkedinEl.value.trim())) { linkMsg.textContent = "LinkedIn must start with https://"; ok = false; } else linkMsg.textContent = "";
+
+  if (!ok) { dataOut.textContent = "Validation errors. Fix fields above."; return; }
+
+  const resumeData = {
+    name: nameEl.value.trim(),
+    email: emailEl.value.trim(),
+    skills: skillsEl.value.split(",").map(s => s.trim()).filter(Boolean),
+    github: githubEl.value.trim(),
+    linkedin: linkedinEl.value.trim(),
+  };
+
+  dataOut.textContent = JSON.stringify(resumeData, null, 2);
+});
+  </script>
+</body>
+</html>

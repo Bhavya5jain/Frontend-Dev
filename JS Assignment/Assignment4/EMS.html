@@ -1,0 +1,46 @@
+<!-- Q6.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Management</title>
+</head>
+<body>
+  <h1>Employees</h1>
+  <div id="list"></div>
+  <h2>Total Annual Payout</h2>
+  <div id="total"></div>
+  <script >
+/**
+ * Employee class with annual salary and bonus application.
+ */
+class Employee {
+  constructor(id, name, department, salary) {
+    this.id = id;
+    this.name = name;
+    this.department = department;
+    this.salary = Number(salary);
+  }
+  getAnnualSalary = () => this.salary * 12;
+  applyBonus = (percent) => { this.salary = Number((this.salary * (1 + percent / 100)).toFixed(2)); };
+}
+
+const employees = [
+  new Employee(1, "Amit", "Engineering", 45000),
+  new Employee(2, "Sara", "Design", 38000),
+  new Employee(3, "Kiran", "Sales", 52000),
+  new Employee(4, "Neha", "HR", 30000),
+  new Employee(5, "Ravi", "Support", 28000),
+];
+
+// Apply a 5% bonus to all (demo)
+employees.forEach(e => e.applyBonus(5));
+
+const list = document.getElementById("list");
+list.innerHTML = employees.map(e => `<p>${e.name} (${e.department}) — Monthly: ₹${e.salary}, Annual: ₹${e.getAnnualSalary()}</p>`).join("");
+
+const totalAnnual = employees.reduce((sum, e) => sum + e.getAnnualSalary(), 0);
+document.getElementById("total").textContent = `₹${totalAnnual}`;
+  </script>
+</body>
+</html>

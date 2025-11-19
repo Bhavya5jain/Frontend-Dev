@@ -1,0 +1,70 @@
+<!-- Q3.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Library Management</title>
+</head>
+<body>
+  <h1>Available Books</h1>
+  <div id="available"></div>
+
+  <h2>Issue by ISBN</h2>
+  <input id="isbnInput" placeholder="Enter ISBN" />
+  <button id="issueBtn">Issue</button>
+  <div id="issueMsg"></div>
+
+  <script >
+ 
+/**
+ * Book class with issue/return methods.
+ */
+class Book {
+  constructor(title, author, isbn, isIssued = false) {
+    this.title = title;
+    this.author = author;
+    this.isbn = String(isbn);
+    this.isIssued = Boolean(isIssued);
+  }
+  issueBook = () => { if (!this.isIssued) this.isIssued = true; };
+  returnBook = () => { if (this.isIssued) this.isIssued = false; };
+  details = () => `${this.title} by ${this.author} [ISBN: ${this.isbn}] - ${this.isIssued ? "Issued" : "Available"}`;
+}
+
+const books = [
+  new Book("Clean Code", "Robert C. Martin", "1111"),
+  new Book("You Don't Know JS", "Kyle Simpson", "2222"),
+  new Book("Eloquent JavaScript", "Marijn Haverbeke", "3333", true),
+  new Book("JavaScript Patterns", "Stoyan Stefanov", "4444"),
+];
+
+const renderAvailable = () => {
+  const available = books.filter(b => !b.isIssued);
+  document.getElementById("available").innerHTML =
+    available.map(b => `<p>${b.details()}</p>`).join("") || "<p>No available books.</p>";
+};
+
+renderAvailable();
+
+document.getElementById("issueBtn").addEventListener("click", () => {
+  const isbn = document.getElementById("isbnInput").value.trim();
+  const book = books.find(b => b.isbn === isbn);
+  const msg = document.getElementById("issueMsg");
+  if (!book) {
+    msg.textContent = "Book not found.";
+    msg.style.color = "#e53935";
+    return;
+  }
+  if (book.isIssued) {
+    msg.textContent = "Book already issued.";
+    msg.style.color = "#e53935";
+  } else {
+    book.issueBook();
+    msg.textContent = "Book issued successfully.";
+    msg.style.color = "#43a047";
+    renderAvailable();
+  }
+});
+  </script>
+</body>
+</html>

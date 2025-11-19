@@ -1,0 +1,50 @@
+<!-- Q1.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>E-Commerce Product Manager</title>
+</head>
+<body>
+  <h1>Products > 1000</h1>
+  <div id="output"></div>
+  <script>
+ /**
+ * Product class uses ES6 class.
+ * - applyDiscount(percent): mutates price with given percent
+ * - details(): returns formatted string via template literals
+ */
+class Product {
+  constructor(id, name, price, category) {
+    this.id = id;
+    this.name = name;
+    this.price = Number(price);
+    this.category = category;
+  }
+  applyDiscount = (percent = 10) => {
+    // Apply percentage discount to price
+    this.price = Number((this.price * (1 - percent / 100)).toFixed(2));
+  };
+  details = () => `#${this.id} ${this.name} | ₹${this.price} | ${this.category}`;
+}
+
+// Create product array
+const products = [
+  new Product(1, "Laptop", 75000, "Electronics"),
+  new Product(2, "Shoes", 1500, "Fashion"),
+  new Product(3, "Book", 499, "Books"),
+  new Product(4, "Phone", 12000, "Electronics")
+];
+
+// Apply a discount to all products (demo)
+products.forEach(p => p.applyDiscount(10));
+
+// Filter products with price > 1000 and display in DOM (and console)
+const expensive = products.filter(p => p.price > 1000);
+console.log("Products > 1000:", expensive.map(p => p.details()));
+
+const out = document.getElementById("output");
+out.innerHTML = expensive.map(p => `<p>${p.details()}</p>`).join("");
+  </script>
+</body>
+</html>

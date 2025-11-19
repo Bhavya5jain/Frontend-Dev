@@ -1,0 +1,78 @@
+<!-- Q5.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Ticket Booking</title>
+  <style>.error{color:#e53935}.ok{color:#43a047}</style>
+</head>
+<body>
+  <h1>Book Tickets</h1>
+  <form id="ticketForm" novalidate>
+    <label>Name: <input id="name" /></label>
+    <div id="nameMsg" class="error"></div>
+    <label>Email: <input id="email" type="email" /></label>
+    <div id="emailMsg" class="error"></div>
+    <label>Seats (1-10): <input id="seats" type="number" min="1" max="10" /></label>
+    <div id="seatsMsg" class="error"></div>
+    <button type="submit">Book</button>
+  </form>
+  <pre id="ticket"></pre>
+  <script >
+    // Q5.js
+"use strict";
+
+/**
+ * Validate: name letters only, email format, seats 1..10.
+ * On success, build booking object and display.
+ */
+const form = document.getElementById("ticketForm");
+const nameEl = document.getElementById("name");
+const emailEl = document.getElementById("email");
+const seatsEl = document.getElementById("seats");
+
+const nameMsg = document.getElementById("nameMsg");
+const emailMsg = document.getElementById("emailMsg");
+const seatsMsg = document.getElementById("seatsMsg");
+
+const patterns = {
+  name: /^[A-Za-z ]+$/,
+  email: /^[^\s@]+@[^@\s]+\.[^\s@]+$/,
+};
+
+const validate = () => {
+  let ok = true;
+
+  if (!patterns.name.test(nameEl.value.trim())) {
+    nameMsg.textContent = "Name must be alphabets only.";
+    ok = false;
+  } else nameMsg.textContent = "";
+
+  if (!patterns.email.test(emailEl.value.trim())) {
+    emailMsg.textContent = "Invalid email format.";
+    ok = false;
+  } else emailMsg.textContent = "";
+
+  const seats = Number(seatsEl.value);
+  if (!(seats >= 1 && seats <= 10)) {
+    seatsMsg.textContent = "Seats must be between 1 and 10.";
+    ok = false;
+  } else seatsMsg.textContent = "";
+
+  return ok;
+};
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const ok = validate();
+  const ticketOut = document.getElementById("ticket");
+  if (!ok) {
+    ticketOut.textContent = "Validation failed.";
+    return;
+  }
+  const booking = { name: nameEl.value.trim(), email: emailEl.value.trim(), seats: Number(seatsEl.value) };
+  ticketOut.textContent = `Booking Confirmed:\n${JSON.stringify(booking, null, 2)}`;
+});
+  </script>
+</body>
+</html>

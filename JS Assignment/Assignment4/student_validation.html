@@ -1,0 +1,96 @@
+<!-- Q2.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Form Validator</title>
+  <style>
+    .error { border: 2px solid #e53935; }
+    .valid { border: 2px solid #43a047; }
+    .msg { color: #e53935; font-size: 0.9rem; }
+    .ok { color: #43a047; }
+    form { max-width: 360px; }
+    label { display:block; margin-top:10px; }
+  </style>
+</head>
+<body>
+  <h1>Student Registration</h1>
+  <form id="studentForm" novalidate>
+    <label>Name: <input id="name" type="text" /></label>
+    <div id="nameMsg" class="msg"></div>
+
+    <label>Email: <input id="email" type="email" /></label>
+    <div id="emailMsg" class="msg"></div>
+
+    <label>Phone: <input id="phone" type="text" /></label>
+    <div id="phoneMsg" class="msg"></div>
+
+    <label>Password: <input id="password" type="password" /></label>
+    <div id="passwordMsg" class="msg"></div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="result"></div>
+  <script >
+/**
+ * DOM-based validation with RegExp.
+ * Adds green/red borders and specific messages.
+ */
+const form = document.getElementById("studentForm");
+const fields = {
+  name: document.getElementById("name"),
+  email: document.getElementById("email"),
+  phone: document.getElementById("phone"),
+  password: document.getElementById("password"),
+};
+const msgs = {
+  name: document.getElementById("nameMsg"),
+  email: document.getElementById("emailMsg"),
+  phone: document.getElementById("phoneMsg"),
+  password: document.getElementById("passwordMsg"),
+};
+
+const patterns = {
+  name: /^[A-Za-z ]+$/,
+  email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+  phone: /^\d{10}$/,
+  password: /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-={}\[\]|:;"'<>,.?/~`]).{8,}$/,
+};
+
+const validateField = (key, value) => {
+  const isValid = patterns[key].test(value.trim());
+  fields[key].classList.toggle("valid", isValid);
+  fields[key].classList.toggle("error", !isValid);
+  msgs[key].textContent = isValid ? "" : getErrorText(key);
+  return isValid;
+};
+
+const getErrorText = (key) => {
+  const map = {
+    name: "Name must contain alphabets only.",
+    email: "Enter a valid email (example@domain.com).",
+    phone: "Phone must be exactly 10 digits.",
+    password: "Password must include 1 uppercase, 1 number, 1 special character, min 8 chars.",
+  };
+  return map[key];
+};
+
+// Validate on input for UI feedback
+Object.keys(fields).forEach(k => {
+  fields[k].addEventListener("input", () => validateField(k, fields[k].value));
+});
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const allValid = Object.keys(fields).every(k => validateField(k, fields[k].value));
+  const result = document.getElementById("result");
+  if (allValid) {
+    result.innerHTML = `<p class="ok">Registration successful!</p>`;
+  } else {
+    result.innerHTML = `<p class="msg">Please fix the errors above.</p>`;
+  }
+});
+  </script>
+</body>
+</html>

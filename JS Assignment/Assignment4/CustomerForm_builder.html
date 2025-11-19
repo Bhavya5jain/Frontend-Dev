@@ -1,0 +1,64 @@
+<!-- Q4.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Form Builder</title>
+</head>
+<body>
+  <h1>Dynamic Form</h1>
+  <div id="formContainer"></div>
+  <pre id="result"></pre>
+  <script >
+    // Q4.js
+"use strict";
+
+/**
+ * FormBuilder class:
+ * - build(): creates form via innerHTML
+ * - getFormData(): returns object of values
+ */
+class FormBuilder {
+  constructor(fields = []) {
+    this.fields = fields;
+    this.formId = "dynamicForm";
+  }
+
+  build = (mountEl) => {
+    const html = `
+      <form id="${this.formId}">
+        ${this.fields.map(f =>
+          `<label>${f.label}: <input type="${f.type}" name="${f.name}" placeholder="${f.placeholder || ""}"></label>`
+        ).join("")}
+        <button type="submit">Submit</button>
+      </form>
+    `;
+    mountEl.innerHTML = html;
+    document.getElementById(this.formId).addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = this.getFormData();
+      document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+    });
+  };
+
+  getFormData = () => {
+    const form = document.getElementById(this.formId);
+    const data = {};
+    this.fields.forEach(f => {
+      data[f.name] = form.elements[f.name].value;
+    });
+    return data;
+  };
+}
+
+const fields = [
+  { type: "text", label: "Username", name: "username", placeholder: "Enter username" },
+  { type: "email", label: "Email", name: "email", placeholder: "email@example.com" },
+  { type: "password", label: "Password", name: "password" },
+];
+
+const builder = new FormBuilder(fields);
+builder.build(document.getElementById("formContainer"));
+  </script>
+</body>
+</html>

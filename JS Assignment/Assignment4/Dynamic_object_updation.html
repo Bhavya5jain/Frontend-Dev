@@ -1,0 +1,44 @@
+<!-- Q8.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Object Updater</title>
+</head>
+<body>
+  <h1>Edit User</h1>
+  <form id="userForm">
+    <label>Name: <input id="name" /></label>
+    <label>Email: <input id="email" type="email" /></label>
+    <label>Age: <input id="age" type="number" /></label>
+    <button type="submit">Update</button>
+  </form>
+  <h2>Current Object</h2>
+  <pre id="out"></pre>
+  <script>
+/**
+ * Edit form updates object live, then paints DOM with latest info.
+ */
+const user = { name: "Akash", email: "akash@mail.com", age: 21 };
+
+const form = document.getElementById("userForm");
+const out = document.getElementById("out");
+
+const paint = () => { out.textContent = JSON.stringify(user, null, 2); };
+paint();
+
+// Pre-fill inputs
+document.getElementById("name").value = user.name;
+document.getElementById("email").value = user.email;
+document.getElementById("age").value = user.age;
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  user.name = document.getElementById("name").value.trim();
+  user.email = document.getElementById("email").value.trim();
+  user.age = Number(document.getElementById("age").value);
+  paint();
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Task Manager</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+body{
+  background:#f1f5ff;
+  font-family:Poppins;
+  padding:40px;
+  text-align:center;
+}
+
+select{
+  padding:10px 15px;
+  font-size:18px;
+  border-radius:12px;
+  border:2px solid #333;
+  margin-bottom:25px;
+  outline:none;
+}
+
+ul{ list-style:none; padding:0; }
+
+li{
+  background:white;
+  width:420px;
+  margin:auto;
+  padding:15px;
+  border-radius:12px;
+  margin-top:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.12);
+}
+
+.badge{
+  padding:5px 10px;
+  border-radius:8px;
+  color:white;
+}
+
+.High{background:#e63946;}
+.Medium{background:#e9c46a;}
+.Low{background:#2a9d8f;}
+</style>
+</head>
+
+<body>
+
+<h2>📝 Stylish Task Manager</h2>
+
+<select id="filter">
+ <option value="">All Tasks</option>
+ <option value="Low">Low Priority</option>
+ <option value="Medium">Medium Priority</option>
+ <option value="High">High Priority</option>
+ <option value="Completed">Completed Tasks</option>
+</select>
+
+<ul id="taskList"></ul>
+
+<script>
+function loadTasks(filter=""){
+  let url="http://localhost:3002/tasks";
+
+  if(filter==="Completed") url += "?completed=true";
+  else if(filter) url+=`?priority=${filter}`;
+
+  $.get(url,function(data){
+    $("#taskList").empty();
+    data.forEach(task=>{
+      $("#taskList").append(`
+        <li>
+          <div>
+            <input type="checkbox" ${task.completed?"checked":""} onclick="toggle(${task.id},${task.completed})"/>
+            <strong> ${task.title} </strong>
+          </div>
+          <span class="badge ${task.priority}">
+             ${task.priority}
+          </span>
+        </li>
+      `);
+    });
+  });
+}
+
+function toggle(id,completed){
+  $.ajax({
+    url:`http://localhost:3002/tasks/${id}`,
+    method:"PATCH",
+    contentType:"application/json",
+    data:JSON.stringify({completed:!completed}),
+    success:()=>loadTasks($("#filter").val())
+  });
+}
+
+$("#filter").on("change",()=>loadTasks($("#filter").val()));
+loadTasks();
+</script>
+
+</body>
+</html>

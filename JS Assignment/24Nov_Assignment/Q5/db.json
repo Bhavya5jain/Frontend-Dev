@@ -1,0 +1,18 @@
+{
+  "timetable": [
+    { "id": 1, "day": "Monday", "subject": "Operating System", "faculty": "Dr. Mehta", "time": "10 AM" },
+    { "id": 2, "day": "Monday", "subject": "Computer Networks", "faculty": "Prof. Sharma", "time": "12 PM" },
+
+    { "id": 3, "day": "Tuesday", "subject": "DBMS", "faculty": "Prof. Karan", "time": "9 AM" },
+    { "id": 4, "day": "Tuesday", "subject": "Data Structures", "faculty": "Ms. Anjali", "time": "11 AM" },
+
+    { "id": 5, "day": "Wednesday", "subject": "Software Engineering", "faculty": "Mr. Rahul", "time": "10 AM" },
+    { "id": 6, "day": "Wednesday", "subject": "AI & ML", "faculty": "Mrs. Payal", "time": "1 PM" },
+
+    { "id": 7, "day": "Thursday", "subject": "Computer Graphics", "faculty": "Dr. Shalini", "time": "9 AM" },
+    { "id": 8, "day": "Thursday", "subject": "Compiler Design", "faculty": "Prof. Ashok", "time": "11 AM" },
+
+    { "id": 9, "day": "Friday", "subject": "Cyber Security", "faculty": "Dr. Sameer", "time": "10 AM" },
+    { "id": 10, "day": "Friday", "subject": "Cloud Computing", "faculty": "Mrs. Ankita", "time": "12 PM" }
+  ]
+}

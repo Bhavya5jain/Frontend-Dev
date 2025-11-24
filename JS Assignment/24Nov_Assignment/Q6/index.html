@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form</title>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+body{
+  background:#f2f7ff;
+  text-align:center;
+  padding:50px;
+  font-family:Poppins;
+}
+
+input{
+  width:320px;
+  padding:14px;
+  font-size:18px;
+  margin-top:15px;
+  border-radius:12px;
+  border:2px solid #4154f1;
+}
+
+button{
+  margin-top:20px;
+  padding:14px 24px;
+  border:none;
+  background:#4154f1;
+  color:white;
+  font-size:20px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{background:#273be0;}
+</style>
+</head>
+
+<body>
+
+<h2>📝 Create Account</h2>
+
+<input id="name" placeholder="Full Name"><br>
+<input id="email" placeholder="Email"><br>
+<button onclick="register()">Register</button>
+
+<script>
+function register(){
+ let name = document.getElementById("name").value;
+ let email = document.getElementById("email").value;
+
+ axios.get(`http://localhost:3005/users?email=${email}`)
+ .then(res=>{
+   if(res.data.length>0){
+     Swal.fire("❌ Email already registered!");
+   } else {
+     axios.post("http://localhost:3005/users", {name,email})
+     Swal.fire("🎉 Registered Successfully!");
+   }
+ });
+}
+</script>
+
+</body>
+</html>

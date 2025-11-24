@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Q4 · Employee & Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f8ff;--card:#fff;--accent:#1565c0;--muted:#5b7994}
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+body{margin:0;min-height:100vh;background:linear-gradient(180deg,#f7fbff,#eef8ff);display:flex;align-items:center;justify-content:center;padding:28px}
+.container{width:900px;background:var(--card);border-radius:14px;padding:22px;box-shadow:0 12px 36px rgba(21,101,192,0.06)}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.title{font-size:20px;color:var(--accent);font-weight:700}
+.row{display:flex;gap:12px}
+.card{flex:1;padding:16px;border-radius:10px;background:linear-gradient(180deg,#fff,#f2f8ff)}
+.btn{background:linear-gradient(90deg,var(--accent),#2983ff);color:#fff;border:none;padding:10px 12px;border-radius:10px;cursor:pointer}
+.output{margin-top:12px;padding:12px;border-radius:10px;background:#fbfeff;min-height:120px;white-space:pre-wrap;color:#0b2b4a}
+.footer{margin-top:12px;text-align:right;color:var(--muted);font-size:13px}
+@media(max-width:800px){.row{flex-direction:column}}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <div class="title">Q4 — Employee Inheritance</div>
+        <div style="color:var(--muted);font-size:13px">Showcasing method overriding & runtime polymorphism</div>
+      </div>
+      <button id="runQ4" class="btn">Run Demo</button>
+    </div>
+
+    <div class="row">
+      <div class="card">
+        <h3 style="margin:0 0 8px;color:var(--accent)">Objects</h3>
+        <div style="color:var(--muted);font-size:13px">Employee and Manager instances will be invoked.</div>
+        <div id="q4out" class="output">Click <strong>Run Demo</strong> to see polymorphism output.</div>
+      </div>
+    </div>
+
+    <div class="footer">JS file: <code>Q4_employee.js</code></div>
+  </div>
+
+<script src="Q4.js"></script>
+</body>
+</html>

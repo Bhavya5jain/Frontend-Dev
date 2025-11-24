@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Live Product Search</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+body{
+  font-family: Poppins, sans-serif;
+  background:#eef1ff;
+  padding:40px;
+  text-align:center;
+}
+
+h2{ font-size:34px; margin-bottom:25px; }
+
+input{
+  padding:12px 18px;
+  width:350px;
+  border-radius:10px;
+  border:2px solid #5a67ff;
+  outline:none;
+  font-size:18px;
+}
+
+#loading{ font-size:18px; display:none; color:#5a67ff; margin-top:10px;}
+
+#results{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:25px;
+  gap:20px;
+}
+
+.card{
+  width:250px;
+  background:white;
+  border-radius:15px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  padding:15px;
+  transition:.3s;
+  text-align:center;
+}
+.card:hover{ transform:translateY(-6px); }
+
+img{width:180px; height:180px; border-radius:10px;}
+
+.price{ color:#5a67ff; font-size:20px; font-weight:600;}
+</style>
+</head>
+
+<body>
+
+<h2>🔍 Live Product Search</h2>
+<input type="text" id="search" placeholder="Search mobile phones...">
+<p id="loading">⏳ Searching...</p>
+<div id="results"></div>
+
+<script>
+$(document).ready(()=>{
+  $("#search").on("keyup", ()=>{
+    let value = $("#search").val();
+    $("#loading").show();
+
+    $.ajax({
+      url:`http://localhost:3000/products?q=${value}`,
+      method:"GET",
+      success:(data)=>{
+        $("#loading").hide();
+        $("#results").empty();
+
+        if(data.length===0){
+          $("#results").html("<h3>No products found 😢</h3>");
+        } else {
+          data.forEach(item=>{
+            $("#results").append(`
+            <div class="card">
+              <img src="${item.image}" />
+              <h3>${item.name}</h3>
+              <p class="price">₹${item.price}</p>
+            </div>
+            `);
+          });
+        }
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

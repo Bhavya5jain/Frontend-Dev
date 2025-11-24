@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>API Dashboard</title>
+<style>
+body{
+  font-family: Poppins, sans-serif;
+  background:#f2f4ff;
+  text-align:center;
+  padding:40px;
+}
+
+h2{font-size:32px;margin-bottom:25px;}
+
+.dashboard{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  margin-top:25px;
+}
+
+.card{
+  width:220px;
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.15);
+  font-size:22px;
+  transition:.3s;
+}
+.card:hover{transform:translateY(-6px);}
+
+.skeleton{
+  height:30px;
+  background:#d6d8eb;
+  margin:10px 0;
+  border-radius:10px;
+  animation:loading 1.2s infinite;
+}
+
+@keyframes loading{
+  0%{opacity:.4}
+  50%{opacity:1}
+  100%{opacity:.4}
+}
+
+.error{
+  padding:12px;
+  margin-top:25px;
+  background:#ff4c4c;
+  color:white;
+  border-radius:10px;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<h2>📊 Multi-API Dashboard</h2>
+
+<div class="dashboard">
+  <div class="card"><div id="u" class="skeleton"></div></div>
+  <div class="card"><div id="o" class="skeleton"></div></div>
+  <div class="card"><div id="p" class="skeleton"></div></div>
+</div>
+
+<p id="message"></p>
+
+<script>
+Promise.all([
+ fetch("http://localhost:3003/users").then(r=>r.json()),
+ fetch("http://localhost:3003/orders").then(r=>r.json()),
+ fetch("http://localhost:3003/products").then(r=>r.json())
+])
+.then(data=>{
+ document.getElementById("u").innerHTML = `👤 Users<br><b>${data[0].length}</b>`;
+ document.getElementById("o").innerHTML = `📦 Orders<br><b>${data[1].length}</b>`;
+ document.getElementById("p").innerHTML = `📱 Products<br><b>${data[2].length}</b>`;
+})
+.catch(()=>{
+ document.getElementById("message").innerHTML =
+ `<div class="error">⚠ Some data could not be loaded</div>`;
+});
+</script>
+
+</body>
+</html>

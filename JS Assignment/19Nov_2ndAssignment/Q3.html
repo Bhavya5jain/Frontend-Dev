@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Q3 · Product Discounts</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f0f7ff;--card:#fff;--accent:#1976d2;--muted:#5c7a95}
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+body{margin:0;min-height:100vh;background:linear-gradient(180deg,#f7fbff,#eef8ff);display:flex;align-items:center;justify-content:center;padding:28px}
+.container{width:900px;background:var(--card);border-radius:14px;padding:22px;box-shadow:0 12px 36px rgba(25,118,210,0.08)}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.title{font-size:20px;color:var(--accent);font-weight:700}
+.grid{display:flex;gap:12px;align-items:stretch}
+.panel{flex:1;padding:14px;border-radius:10px;background:linear-gradient(180deg,#fff,#f3fbff)}
+.product{display:flex;justify-content:space-between;padding:8px;border-radius:8px;background:#f7fbff;margin-bottom:8px}
+.kv{color:var(--muted);font-size:13px}
+.btn{background:linear-gradient(90deg,var(--accent),#2d9bff);color:white;border:none;padding:10px 12px;border-radius:10px;cursor:pointer;font-weight:600}
+.output{margin-top:12px;padding:12px;border-radius:10px;background:#fbfeff;min-height:120px;white-space:pre-wrap;color:#0b2b4a}
+.footer{margin-top:12px;text-align:right;color:var(--muted);font-size:13px}
+@media(max-width:800px){.grid{flex-direction:column}}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <div class="title">Q3 — Product Discount System</div>
+        <div style="color:var(--muted);font-size:13px">Constructor + prototype + abstraction</div>
+      </div>
+      <button id="runQ3" class="btn">Show Discounts</button>
+    </div>
+
+    <div class="grid">
+      <div class="panel">
+        <div class="product"><strong>Laptop</strong><span class="kv">₹50000</span></div>
+        <div class="product"><strong>Headphones</strong><span class="kv">₹2000</span></div>
+        <div class="product"><strong>Smartwatch</strong><span class="kv">₹12000</span></div>
+        <div id="q3out" class="output">Click <strong>Show Discounts</strong> to view discounted prices.</div>
+      </div>
+    </div>
+
+    <div class="footer">JS file: <code>Q3_product.js</code></div>
+  </div>
+
+<script src="Q3.js"></script>
+</body>
+</html>

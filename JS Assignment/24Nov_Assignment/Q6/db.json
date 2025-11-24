@@ -1,0 +1,12 @@
+{
+  "users": [
+    { "id": 1, "name": "Aman Sharma", "email": "aman@gmail.com" },
+    { "id": 2, "name": "Neha Verma", "email": "neha@gmail.com" },
+    { "id": 3, "name": "Rohit Singh", "email": "rohit@gmail.com" },
+    { "id": 4, "name": "Priya Gupta", "email": "priya@gmail.com" },
+    { "id": 5, "name": "Vikas Yadav", "email": "vikas@gmail.com" },
+    { "id": 6, "name": "Saurabh Mishra", "email": "saurabh@gmail.com" },
+    { "id": 7, "name": "Harshit Chouhan", "email": "harshit@gmail.com" },
+    { "id": 8, "name": "Simran Kaur", "email": "simran@gmail.com" }
+  ]
+}

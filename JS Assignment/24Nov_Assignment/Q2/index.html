@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employee Dashboard</title>
+
+<style>
+body{
+  font-family: Poppins, sans-serif;
+  background: #f3f5ff;
+  padding: 40px;
+}
+
+h2{
+  text-align:center;
+  font-size:32px;
+  color:#333;
+  margin-bottom:25px;
+}
+
+.container{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
+}
+
+.card{
+  width:260px;
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  text-align:center;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform: translateY(-5px);
+}
+
+.name{
+  font-size:22px;
+  font-weight:600;
+  margin-bottom:15px;
+}
+
+/* switch button */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 55px;
+  height: 28px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ff4c4c;
+  transition: .4s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #00C853;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.status-text{
+  margin-top:12px;
+  font-weight:600;
+}
+.active-color{color:#00C853;}
+.inactive-color{color:#ff4c4c;}
+</style>
+
+</head>
+<body>
+
+<h2>Employee Status Dashboard</h2>
+<div class="container" id="list"></div>
+
+<script>
+function loadEmployees() {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "http://localhost:3001/employees");
+  xhr.onload = function() {
+    const data = JSON.parse(this.response);
+    let output = "";
+    data.forEach(emp => {
+      output += `
+        <div class="card">
+          <p class="name">${emp.name}</p>
+
+          <label class="switch">
+            <input type="checkbox" ${emp.status==="active"?"checked":""} 
+            onclick="toggleStatus(${emp.id}, '${emp.status}')">
+            <span class="slider"></span>
+          </label>
+
+          <p class="status-text ${emp.status==="active"?"active-color":"inactive-color"}">
+            ${emp.status.toUpperCase()}
+          </p>
+        </div>
+      `;
+    });
+    document.getElementById("list").innerHTML = output;
+  };
+  xhr.send();
+}
+
+function toggleStatus(id, current){
+  let newStatus = current === "active" ? "inactive" : "active";
+
+  const xhr = new XMLHttpRequest();
+  xhr.open("PATCH", `http://localhost:3001/employees/${id}`);
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  xhr.onload = function(){
+    loadEmployees();
+  };
+
+  xhr.onerror = function(){
+    alert("Error while updating status");
+    loadEmployees();
+  };
+
+  xhr.send(JSON.stringify({status:newStatus}));
+}
+
+loadEmployees();
+</script>
+
+</body>
+</html>

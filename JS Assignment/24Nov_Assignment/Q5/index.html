@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Timetable Viewer</title>
+<style>
+body{
+  background:#eef2ff;
+  text-align:center;
+  font-family:Poppins;
+  padding:40px;
+}
+
+select{
+  padding:12px 18px;
+  font-size:18px;
+  border-radius:12px;
+  border:2px solid #4154f1;
+  outline:none;
+  margin-bottom:25px;
+}
+
+table{
+  margin:auto;
+  width:60%;
+  border-collapse:collapse;
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  font-size:18px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+
+th,td{
+  padding:15px;
+  border-bottom:1px solid #ddd;
+}
+
+th{
+  background:#4154f1;
+  color:white;
+  font-size:20px;
+}
+
+.noclass{
+  font-size:22px;
+  margin-top:20px;
+  font-weight:bold;
+  color:#ff3d3d;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  0%{opacity:1} 50%{opacity:.4} 100%{opacity:1}
+}
+</style>
+</head>
+
+<body>
+
+<h2>🎓 College Timetable Viewer</h2>
+
+<select id="day">
+ <option>Monday</option>
+ <option>Tuesday</option>
+ <option>Wednesday</option>
+ <option>Thursday</option>
+ <option>Friday</option>
+</select>
+
+<div id="content"></div>
+
+<script>
+document.getElementById("day").addEventListener("change", load);
+load();
+
+function load(){
+ let day = document.getElementById("day").value;
+
+ fetch(`http://localhost:3004/timetable?day=${day}`)
+ .then(res=>res.json())
+ .then(data=>{
+   if(data.length===0){
+     document.getElementById("content").innerHTML =
+     `<div class="noclass">📢 No classes today</div>`;
+   } else {
+     const t = data[0];
+     document.getElementById("content").innerHTML = `
+      <table>
+        <tr><th>Subject</th><th>Faculty</th><th>Time</th></tr>
+        <tr><td>${t.subject}</td><td>${t.faculty}</td><td>${t.time}</td></tr>
+      </table>`;
+   }
+ });
+}
+</script>
+
+</body>
+</html>

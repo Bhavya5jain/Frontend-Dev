@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Q5 · Ride Sharing</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#edf7ff;--card:#fff;--accent:#0d47a1;--muted:#5b7590}
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+body{margin:0;min-height:100vh;background:linear-gradient(180deg,#f8fbff,#e9f6ff);display:flex;align-items:center;justify-content:center;padding:28px}
+.container{width:920px;background:var(--card);border-radius:14px;padding:22px;box-shadow:0 12px 36px rgba(13,71,161,0.06)}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.title{font-size:20px;color:var(--accent);font-weight:700}
+.controls{display:flex;gap:10px;align-items:center}
+.input{padding:10px;border-radius:10px;border:1px solid #e1eefc}
+.btn{background:linear-gradient(90deg,var(--accent),#235bd8);color:#fff;border:none;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600}
+.output{margin-top:12px;padding:14px;border-radius:10px;background:#fbfeff;min-height:120px;white-space:pre-wrap;color:#072140}
+.footer{margin-top:12px;text-align:right;color:var(--muted);font-size:13px}
+@media(max-width:780px){.controls{flex-direction:column;align-items:stretch}}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <div class="title">Q5 — Ride Sharing (Trip Fare)</div>
+        <div style="color:var(--muted);font-size:13px">Classes, inheritance, fare calculation with validation</div>
+      </div>
+      <div class="controls">
+        <input id="fromInput" class="input" placeholder="From" value="Lucknow" />
+        <input id="toInput" class="input" placeholder="To" value="Kanpur" />
+        <input id="distanceInput" class="input" placeholder="Distance (km)" value="82" />
+        <button id="runQ5" class="btn">Calculate Fare</button>
+      </div>
+    </div>
+
+    <div id="q5out" class="output">Fill fields and click <strong>Calculate Fare</strong>.</div>
+    <div class="footer">JS file: <code>Q5_trip.js</code></div>
+  </div>
+
+<script src="Q5.js"></script>
+</body>
+</html>

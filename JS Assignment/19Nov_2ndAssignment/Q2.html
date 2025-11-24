@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Q2 · Food Ordering</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#e9f5ff;--card:#ffffff;--accent:#1e88ff;--muted:#5e7d99}
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+body{margin:0;min-height:100vh;background:linear-gradient(160deg,var(--bg1),#f3fbff);display:flex;align-items:center;justify-content:center;padding:28px}
+.container{width:920px;background:var(--card);border-radius:14px;padding:20px;box-shadow:0 10px 30px rgba(30,136,255,0.08)}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.title{font-size:20px;color:var(--accent);font-weight:700}
+.controls{display:flex;gap:10px}
+.input{padding:10px;border-radius:10px;border:1px solid #e1eefc;min-width:420px}
+.btn{background:linear-gradient(90deg,var(--accent),#3aa0ff);border:none;color:#fff;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600}
+.output{margin-top:12px;padding:14px;border-radius:10px;background:linear-gradient(180deg,#fbfeff,#f7fcff);min-height:120px;white-space:pre-wrap;color:#0f2b4a}
+.menu{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.item{background:#f1f8ff;padding:8px 10px;border-radius:8px;color:#0f3b6b}
+.footer{margin-top:12px;text-align:right;color:var(--muted);font-size:13px}
+@media(max-width:720px){.container{width:100%}.input{min-width:200px}}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <div class="title">Q2 — Online Food Ordering</div>
+        <div style="color:var(--muted);font-size:13px">map() + reduce() + try/catch error handling</div>
+      </div>
+      <div class="controls">
+        <input id="orderInput" class="input" placeholder="Enter items comma-separated e.g. pizza,fries,pasta" />
+        <button id="runQ2" class="btn">Calculate</button>
+      </div>
+    </div>
+
+    <div id="q2menu" class="menu"></div>
+    <div id="q2out" class="output">Enter items and press Calculate.</div>
+    <div class="footer">JS file: <code>Q2_food.js</code></div>
+  </div>
+
+<script src="Q2.js"></script>
+</body>
+</html>
